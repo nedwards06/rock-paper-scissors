@@ -16,9 +16,25 @@
             let rndNum = Math.round((Math.random() * 2) + 1);
             
             //If 1, return rock; if 2, return paper; else, return scissors
-            return rndNum === 1 ? 'Rock' : rndNum === 2 ? 'Paper' : 'Scissors';
+            return rndNum === 1 ? 'ROCK' : rndNum === 2 ? 'PAPER' : 'SCISSORS';
 
         }
+
+        //get human player's choice
+        function getHumanChoice () {
+
+            //use prompt method to get user's input
+            let userChoice = prompt("ROCK, PAPER, or SCISSORS?");
+
+            //make sure it's a valid choice and, if it is, return it
+            userChoice = userChoice.toUpperCase();            
+            if (userChoice !== "ROCK" && userChoice !== "PAPER" && userChoice !== "SCISSORS") {
+                alert("Invalid choice. Try again.");
+            } else {
+                return(userChoice);
+            }
+        }
+
 
     </script>
 
