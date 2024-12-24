@@ -35,46 +35,62 @@
             }
         }
 
-        //declare and initialize the players' score variables
-        let humanScore = 0;
-        let computerScore = 0;
+playGame();
+       
+function playGame() {
 
-        //play a single round
-        function playRound(humanChoice, computerChoice) {
+    //declare and initialize the players' score variables
+    let humanScore = 0;
+    let computerScore = 0;
 
-            //Check for draw
-            if (humanChoice === computerChoice) {
-                console.log("Draw!");
-                return;
-            }
+    for (i=0; i<5; i++) {
+        playRound(getHumanChoice(), getComputerChoice());
+    }
 
-            let winMessage;
+    console.log(`
+    Final Scores
+    ------------
+    Human: ${humanScore}
+    Computer: ${computerScore}`);
 
-            if (humanChoice === "ROCK" && computerChoice === "SCISSORS") {
-                winMessage = "You win! Rock breaks scissors.";
-                humanScore++;
-            } else if (humanChoice === "ROCK" && computerChoice === "PAPER") {
-                winMessage = "You lose! Paper covers rock.";
-                computerScore++;
-            } else if (humanChoice === "PAPER" && computerChoice === "ROCK") {
-                winMessage = "You win! Paper covers rock.";
-                humanScore++;
-            } else if (humanChoice === "PAPER" && computerChoice === "SCISSORS") {
-                winMessage = "You lose! Scissors cut paper.";
-                computerScore++;
-            } else if (humanChoice === "SCISSORS" && computerChoice === "PAPER") {
-                winMessage = "You win! Scissors cut paper.";
-                humanScore++;
-            } else {
-                //By default, this is the only option left
-                winMessage = "You lose! Rock breaks scissors.";
-                computerScore++;
-            }
 
-            console.log(winMessage);
-            
+    //play a single round
+    function playRound(humanChoice, computerChoice) {
 
+        let winMessage;
+
+        //Check for draw; if not draw, compare choices
+        if (humanChoice === computerChoice) {
+            winMessage = "Draw!";
+        } else if (humanChoice === "ROCK" && computerChoice === "SCISSORS") {
+            winMessage = "You win! Rock breaks scissors.";
+            humanScore++;
+        } else if (humanChoice === "ROCK" && computerChoice === "PAPER") {
+            winMessage = "You lose! Paper covers rock.";
+            computerScore++;
+        } else if (humanChoice === "PAPER" && computerChoice === "ROCK") {
+            winMessage = "You win! Paper covers rock.";
+            humanScore++;
+        } else if (humanChoice === "PAPER" && computerChoice === "SCISSORS") {
+            winMessage = "You lose! Scissors cut paper.";
+            computerScore++;
+        } else if (humanChoice === "SCISSORS" && computerChoice === "PAPER") {
+            winMessage = "You win! Scissors cut paper.";
+            humanScore++;
+        } else {
+            //By default, this is the only option left
+            winMessage = "You lose! Rock breaks scissors.";
+            computerScore++;
         }
+
+        //Log the outcome
+        console.log(winMessage);
+        console.log(`
+        Computer: ${computerScore}
+        Human: ${humanScore}`);
+    }
+}
+
 
     </script>
 
