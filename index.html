@@ -10,7 +10,7 @@
     <script>
 
         //randomly return rock, paper, or scissors
-        function getComputerChoice () {
+        function getComputerChoice() {
 
             //Get a random number between 1-3
             let rndNum = Math.round((Math.random() * 2) + 1);
@@ -21,7 +21,7 @@
         }
 
         //get human player's choice
-        function getHumanChoice () {
+        function getHumanChoice() {
 
             //use prompt method to get user's input
             let userChoice = prompt("ROCK, PAPER, or SCISSORS?");
@@ -35,6 +35,46 @@
             }
         }
 
+        //declare and initialize the players' score variables
+        let humanScore = 0;
+        let computerScore = 0;
+
+        //play a single round
+        function playRound(humanChoice, computerChoice) {
+
+            //Check for draw
+            if (humanChoice === computerChoice) {
+                console.log("Draw!");
+                return;
+            }
+
+            let winMessage;
+
+            if (humanChoice === "ROCK" && computerChoice === "SCISSORS") {
+                winMessage = "You win! Rock breaks scissors.";
+                humanScore++;
+            } else if (humanChoice === "ROCK" && computerChoice === "PAPER") {
+                winMessage = "You lose! Paper covers rock.";
+                computerScore++;
+            } else if (humanChoice === "PAPER" && computerChoice === "ROCK") {
+                winMessage = "You win! Paper covers rock.";
+                humanScore++;
+            } else if (humanChoice === "PAPER" && computerChoice === "SCISSORS") {
+                winMessage = "You lose! Scissors cut paper.";
+                computerScore++;
+            } else if (humanChoice === "SCISSORS" && computerChoice === "PAPER") {
+                winMessage = "You win! Scissors cut paper.";
+                humanScore++;
+            } else {
+                //By default, this is the only option left
+                winMessage = "You lose! Rock breaks scissors.";
+                computerScore++;
+            }
+
+            console.log(winMessage);
+            
+
+        }
 
     </script>
 
